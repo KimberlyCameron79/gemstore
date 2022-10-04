@@ -1,0 +1,161 @@
+const Collection = require('../models/collection')
+// const seed = require('../models/seed')
+// Bring in seed data
+
+// ROUTE     GET /Gems    (index)
+const findAllGems = (req, res) => {  
+    // Find takes two arguments:
+    //   1st: an object with our query (to filter our data and find exactly what we need)
+    //   2nd: callback (with an error object and the found data)
+    Collection.find({}, (err, foundGem) => {
+        if (err) {
+            res.status(400).json(err)
+        } else {
+            res.status(200).render('collections/Index', { collections: foundGem })
+        }
+    })
+}
+
+// ROUTE      GET /collections/new    (new)
+const showNewView = (req, res) => {     
+    // res.send('<form>Create Gem</form>')
+    res.render('collections/New')
+}
+
+// ROUTE     POST /Gems     (create)
+const createNewGem = (req, res) => {
+    if (req.body.readyToEat === "on") {
+        req.body.readyToEat = true
+    } else {
+        req.body.readyToEat = false
+    }
+    // Create has two arguments:
+    //   1st: the data we want to send
+    //   2nd: callback function 
+    Collection.create(req.body, (err, createdGem) => {
+        if (err) {
+            res.status(400).json(err)
+        } else {
+            res.status(200).redirect('/collections')
+        }
+    })
+}
+
+
+// ROUTE       GET /Gems/seed      (seed)
+const seedStarterData = (req, res) => {
+    // Delete all remaining documents (if there are any)
+    Collection.deleteMany({}, (err, deletedGems) => {
+        if (err) {
+            res.status(400).json(err)
+        } else {
+            console.log('deleted data.')
+            console.log(seed.collections)
+            // Data has been successfully deleted
+            // Now use seed data to repopulate the database
+            Collection.create(seed.collections, (err, createdGems) => {
+                if (err) {
+                    res.status(400).json(err)
+                } else {
+                    res.status(200).redirect('/collections')
+                }
+            })
+        }
+    })
+}
+
+// ROUTE     GET /Gems/:id     (show)
+const showOneGem = (req, res) => {
+    // findById accepts two arguments:
+    //   1st: the id of the document in our database
+    //   2nd: callback (with error object and found document)
+    Collection.findById(req.params.id, (err, foundGem) => {
+        if (err) {
+            res.status(400).json(err)
+        } else {
+            res.status(200).render('collections/Show', { collection: foundGem })
+        }
+    })
+}
+
+
+// ROUTE      GET /collections/:id/edit     (edit)
+const showEditView = (req, res) => {
+    Collection.findById(req.params.id, (err, foundGem) => {
+        if (err) {
+            res.status(400).json(err)
+        } else {
+            res.status(200).render('collections/Edit', { collection: foundGem })
+        }
+    })
+}
+
+// ROUTE     PUT /collections/:id       (update)
+const updateOneGem = (req, res) => {
+
+    if (req.body.readyToEat === "on") {
+        req.body.readyToEat = true
+    } else {
+        req.body.readyToEat = false
+    }
+
+    // findByIdAndUpdate takes 4 arguments:
+    //    1st: the id 
+    //    2nd: new data we want to use to update the old document
+    //    3rd (optional): an options object, which looks like this:  { new: true }
+    //    4th: callback (with error object and foundGem or updatedGem)
+    Collection.findByIdAndUpdate(req.params.id, req.body, (err, foundGem) => {
+        if (err) {
+            res.status(400).json(err)
+        } else {
+            res.status(200).redirect(`/collections/${req.params.id}`)
+        }
+    })
+}
+
+
+// ROUTE       DELETE /collections/:id      (destroy)
+const deleteOneGem = (req, res) => {
+    // console.log('in delete route')
+    // res.send('Deleting a Gem at index! (in DB)')
+    
+    Collection.findByIdAndDelete(req.params.id, (err, deletedGem) => {
+        if (err) {
+            res.status(400).json(err)
+        } else {
+            res.status(200).redirect('/collections')
+        }
+    })
+}
+const clearData = (req, res) => {
+    // Delete all remaining documents (if there are any)
+    Collection.deleteMany({}, (err, deletedGems) => {
+        if (err) {
+            res.status(400).json(err)
+        } else {
+            // console.log('deleted data.')
+            // console.log(seed.Gems)
+            // Data has been successfully deleted
+            // // Now use seed data to repopulate the database
+            // Gem.create(seed.Gems, (err, createdGem) => {
+            //     if (err) {
+            //         res.status(400).json(err)
+            //     } else {
+                    res.status(200).redirect('/collections')
+                }
+            })
+        }
+
+
+
+module.exports = {
+    findAllGems,
+    showNewView, 
+    createNewGem,
+    seedStarterData,
+    showOneGem,
+    showEditView,
+    updateOneGem,
+    deleteOneGem,
+    clearData
+}

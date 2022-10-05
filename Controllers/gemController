@@ -1,5 +1,5 @@
-const Collection = require('../models/collection')
-// const seed = require('../models/seed')
+const Collection = require('../Models/collection')
+const seed = require('../Models/seed')
 // Bring in seed data
 
 // ROUTE     GET /Gems    (index)
@@ -11,7 +11,7 @@ const findAllGems = (req, res) => {
         if (err) {
             res.status(400).json(err)
         } else {
-            res.status(200).render('collections/Index', { collections: foundGem })
+            res.status(200).render('Index', { seed: foundGem })
         }
     })
 }
@@ -24,10 +24,10 @@ const showNewView = (req, res) => {
 
 // ROUTE     POST /Gems     (create)
 const createNewGem = (req, res) => {
-    if (req.body.readyToEat === "on") {
-        req.body.readyToEat = true
+    if (req.body.readyToBuy === "on") {
+        req.body.readyToBuy = true
     } else {
-        req.body.readyToEat = false
+        req.body.readyToBuy = false
     }
     // Create has two arguments:
     //   1st: the data we want to send
@@ -44,20 +44,20 @@ const createNewGem = (req, res) => {
 
 // ROUTE       GET /Gems/seed      (seed)
 const seedStarterData = (req, res) => {
+    console.log(seed.collections)
     // Delete all remaining documents (if there are any)
     Collection.deleteMany({}, (err, deletedGems) => {
         if (err) {
             res.status(400).json(err)
         } else {
             console.log('deleted data.')
-            console.log(seed.collections)
             // Data has been successfully deleted
             // Now use seed data to repopulate the database
-            Collection.create(seed.collections, (err, createdGems) => {
+            Collection.create(seed, (err, createdGems) => {
                 if (err) {
                     res.status(400).json(err)
                 } else {
-                    res.status(200).redirect('/collections')
+                    res.status(200).redirect('/')
                 }
             })
         }
@@ -93,10 +93,10 @@ const showEditView = (req, res) => {
 // ROUTE     PUT /collections/:id       (update)
 const updateOneGem = (req, res) => {
 
-    if (req.body.readyToEat === "on") {
-        req.body.readyToEat = true
+    if (req.body.readyToBuy === "on") {
+        req.body.readyToBuy = true
     } else {
-        req.body.readyToEat = false
+        req.body.readyToBuy = false
     }
 
     // findByIdAndUpdate takes 4 arguments:

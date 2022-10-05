@@ -1,13 +1,18 @@
-const react = require('react');
-const { Link } = require('react-router-dom');
+const React = require('react');
+const DefaultLayout = require('../layouts/DefaultLayout');
 
+// class component
+class Show extends React.Component {
 
-
-
-
-const ShopSection = () => {
-    return (
+    render() {
         
+        const { collection } = this.props
+
+        return (
+            <DefaultLayout title={`${collection.name} details`} gemGroup="collections">
+                <center><h1>2022 Healing Gemstone Collection </h1></center>
+                
+               
         <div className="container">
             <div className="section">
                 <div className="row">
@@ -54,9 +59,12 @@ const ShopSection = () => {
         </div>
     
     </div>
-  );
-};
+  )&rbrace;
+                           
+            
+            </DefaultLayout>
+        )
+    }
+}
 
-                       
-
-    module.exports = ShopSection;    
+module.exports = Show;

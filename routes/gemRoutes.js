@@ -17,9 +17,10 @@ const {
     showEditView,
     updateOneGem,
     deleteOneGem
-} = require('../controllers/GemController')
+} = require('../Controllers/gemController')
 
 
+router.get('/seed', seedStarterData)
 
 //Index route
 router.get('/', findAllGems)
@@ -43,7 +44,6 @@ router.get('/:id/edit', showEditView)
 router.get('/:id', showOneGem)
 
 // Setup "seed" route
-router.get('/seed', seedStarterData)
 
 
 module.exports = router

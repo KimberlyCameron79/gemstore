@@ -1,3 +1,5 @@
+https://github.com/KimberlyCameron79/gemstore.git
+
 This is a Online Healing GemStone Store
 In this store you could purchase gemstone that promotes wellness for various conditions.
 For millennia, people have used gemstones principally for ornamental purposes. However, in both ancient and modern times, cultures all over the world have also believed that gems can have healing properties. Let’s take a look at some popular gemstones and the health benefits they’re said to bring.

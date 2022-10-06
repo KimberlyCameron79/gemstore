@@ -9,59 +9,26 @@ class Show extends React.Component {
         const { collection } = this.props
 
         return (
-            <DefaultLayout title={`${collection.name} details`} gemGroup="collections">
-                <center><h1>2022 Healing Gemstone Collection </h1></center>
-                
-               
-        <div className="container">
-            <div className="section">
-                <div className="row">
-                    <div className="col-lg-12 col-md-12 article">
-                        <div className="shopcontainer row">
-                         {collections.map((collection) => (
-                            <div
-                                className="shop col-lg-4 col-md-6 col-sm-6"
-                                key={collection._id}
+            <DefaultLayout title={`${collection.name} details`} gemGroup="fruits">
+                <h1>Show Page</h1>
+                <p>
+                    The {collection.name} is {collection.price}.
+                </p>
+                <p>
+                    {collection.readyToPurchase ? "Ready to Purchase!" : "Not ready at this time... :("}
+                </p>
 
-                            >
-                                <div className="border=collection">
-                                    <Link to={`/collections/${collection._id}`}>
-                                        <div className="shopBack">
-                                            <img src={collection.image} alt={collection.name} />
-                                        </div>
-                                    </Link>
-                                </div>
+                <button>
+                    <a href={`/seed/${collection._id}/edit`}>Edit</a>
+                </button>
 
-                                <div className="shoptext">
-                                    <p>
-                                    <Link to={`/collections/${collection._id}`}>
-                                        {collection.name}
-                                    </Link>
-                                    </p>
+                <form action={`/seed/${collection._id}?_method=DELETE`} method="POST">
+                    <input type="submit" value="Delete" />
+                </form>
 
-
-                                    <Rating
-                          value={collection.rating}
-                          text={`${collection.numReviews} reviews`}
-                        />
-                        <h3>${collection.price}</h3>
-                      </div>
-                    </div>
-                  
-                ))
-
-                               
-                
-                         }
-                         </div>
-            </div>
-          </div>
-        </div>
-    
-    </div>
-  )&rbrace;
-                           
-            
+                <nav>
+                    <a href="/seed">Back</a>
+                </nav>
             </DefaultLayout>
         )
     }

@@ -18,16 +18,16 @@ const findAllGems = (req, res) => {
 
 // ROUTE      GET /collections/new    (new)
 const showNewView = (req, res) => {     
-    // res.send('<form>Create Gem</form>')
-    res.render('collections/New')
+    res.send('<form>Create Gem</form>')
+    res.render('/New')
 }
 
 // ROUTE     POST /Gems     (create)
-const createNewGem = (req, res) => {
-    if (req.body.readyToBuy === "on") {
-        req.body.readyToBuy = true
+function createNewGem(req, res) {
+    if (req.body.readyToPurchase === "on") {
+        req.body.readyToPurchase = true
     } else {
-        req.body.readyToBuy = false
+        req.body.readyToPurchase = false
     }
     // Create has two arguments:
     //   1st: the data we want to send
@@ -36,7 +36,7 @@ const createNewGem = (req, res) => {
         if (err) {
             res.status(400).json(err)
         } else {
-            res.status(200).redirect('/collections')
+            res.status(200).redirect('/seed')
         }
     })
 }
@@ -44,7 +44,7 @@ const createNewGem = (req, res) => {
 
 // ROUTE       GET /Gems/seed      (seed)
 const seedStarterData = (req, res) => {
-    console.log(seed.collections)
+    console.log(seed.seed)
     // Delete all remaining documents (if there are any)
     Collection.deleteMany({}, (err, deletedGems) => {
         if (err) {
@@ -85,7 +85,7 @@ const showEditView = (req, res) => {
         if (err) {
             res.status(400).json(err)
         } else {
-            res.status(200).render('collections/Edit', { collection: foundGem })
+            res.status(200).render('seed/Edit', { collection: foundGem })
         }
     })
 }
@@ -93,10 +93,10 @@ const showEditView = (req, res) => {
 // ROUTE     PUT /collections/:id       (update)
 const updateOneGem = (req, res) => {
 
-    if (req.body.readyToBuy === "on") {
-        req.body.readyToBuy = true
+    if (req.body.readyToPurchase === "on") {
+        req.body.readyToPurchase = true
     } else {
-        req.body.readyToBuy = false
+        req.body.readyToPurchase = false
     }
 
     // findByIdAndUpdate takes 4 arguments:
@@ -108,7 +108,7 @@ const updateOneGem = (req, res) => {
         if (err) {
             res.status(400).json(err)
         } else {
-            res.status(200).redirect(`/collections/${req.params.id}`)
+            res.status(200).redirect(`/seed/${req.params.id}`)
         }
     })
 }
@@ -123,7 +123,7 @@ const deleteOneGem = (req, res) => {
         if (err) {
             res.status(400).json(err)
         } else {
-            res.status(200).redirect('/collections')
+            res.status(200).redirect('/seed')
         }
     })
 }
@@ -141,7 +141,7 @@ const clearData = (req, res) => {
             //     if (err) {
             //         res.status(400).json(err)
             //     } else {
-                    res.status(200).redirect('/collections')
+                    res.status(200).redirect('/seed')
                 }
             })
         }

@@ -26,7 +26,7 @@ router.get('/seed', seedStarterData)
 router.get('/', findAllGems)
 
 //new route
-router.get('/new', showNewView)
+router.get('/New', showNewView)
 
 //destroy route
 router.delete('/:id', deleteOneGem)

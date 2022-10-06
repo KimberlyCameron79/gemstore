@@ -8,20 +8,20 @@ class Edit extends React.Component {
         let { collection } = this.props
 
         return (
-            <DefaultLayout title="edit a collection" gemGroup="collections">
+            <DefaultLayout title="edit a collection" gemGroup="seed">
                 <h1>Edit Page</h1>
-                <form action={`/collections/${collection._id}?_method=PUT`} method="POST">
+                <form action={`/seed/${collection._id}?_method=PUT`} method="POST">
 
                     <label htmlFor="name">Name:</label>
-                    <input type="text" id="name" name="name" defaultValue={fruit.name} />
+                    <input type="text" id="name" name="name" defaultValue={collection.name} />
 
-                    <label htmlFor="">Color:</label>
-                    <input type="text" id="color" name="color" defaultValue={fruit.color} />
+                    <label htmlFor="">Price:</label>
+                    <input type="text" id="price" name="price" defaultValue={collection.price} />
 
-                    <label htmlFor="readyToEat">Is Ready To Eat:</label>
-                    <input type="checkbox" id="readyToEat" name="readyToEat" defaultChecked={fruit.readyToEat} />
+                    <label htmlFor="readyToPurchase">Is Ready To Purchase:</label>
+                    <input type="checkbox" id="readyToPurchase" name="readyToPurchase" defaultChecked={collection.readyToPurchase} />
 
-                    <input type="submit" value="Edit Fruit"/>
+                    <input type="submit" value="Edit Gem"/>
                 </form>
             </DefaultLayout>
         )

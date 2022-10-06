@@ -20,7 +20,7 @@ const Gems = [
 {
 
         name: "Citrine",
-        image:"https://www.google.com/imgres?imgurl=https%3A%2F%2Fwww.thespruce.com%2Fthmb%2FoJ0al2ShHm8rXg_xK2WZfJ9n6qE%3D%2F6720x4480%2Ffilters%3Ano_upscale()%3Amax_bytes(150000)%3Astrip_icc()%2Fcitrine-crystal-in-healing-feng-shui-and-jewelry-1274371-09-43a0364dcf6c4a86a1c4f7b65c0f01ad.jpg&imgrefurl=https%3A%2F%2Fwww.thespruce.com%2Fcitrine-crystal-in-feng-shui-1274371&tbnid=nwbcVMzc8Sd_qM&vet=12ahUKEwi1jdTlxMn6AhWFn3IEHWlXD6EQMygBegUIARChAw..i&docid=sq7pvgiB1z6FrM&w=6720&h=4480&q=citrine&ved=2ahUKEwi1jdTlxMn6AhWFn3IEHWlXD6EQMygBegUIARChAw",
+        image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKIvfSTJM4_ycfhyEHS2FjSuEOicK8iFskY2oucVbyqs0-8bYYiyzg6k5kmRCZo6HmaRI&usqp=CAU",
         description:"Energising and recharging, Citrine also reverses degenerative disease and helps balance chemical imbalances in the body.  Beneficial in the treatment of diabetes, it stimulates digestion, the spleen and pancreas.  Negates kidney and bladder infections.  Citrine helps eye problems, increases blood circulation, detoxifies the blood, activates the thymus and balances the thyroid.  Relieves constipation and removes cellulite.",
         price: 150.00,
         inStock: 100,
@@ -30,7 +30,7 @@ const Gems = [
       
         name: "Tiger's Eye",
         image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLoHQ9HXx55PAokCbG_YbD2lRXbCoUbv6PTg&usqp=CAU",
-        description:"Tiger eye",
+        description:"Tiger Eye treats eyes, throat and reproductive organs, releases toxins, alleviates pain and is helpful in repairing broken bones and strengthening the alignment of the spinal column.",
         price: 150.00,
         inStock: 100,
        
@@ -40,7 +40,7 @@ const Gems = [
         name: "Rainbow Moonstone",
         image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfYnFHxEUckhsgQF3JdoD1mVyj2Arw5Gg7hA&usqp=CAU",
         description:"This is a very pretty stone that can inspire you to see the more positive side of life. Its a gem of cheer that invites good fortune and healing for your soul. With rainbow moonstone, your meditation sessions will feel feminine and playful. You can also improve your lucid dreaming and use meditating with one to treat trauma.",
-        price: 350.00,
+        price: 120.00,
         inStock: 100,
     }
      

@@ -15,3 +15,4 @@ In this store you could purchase gemstone that promotes wellness for various con
 10. Developed Default Layout
 11. CSS was also developed but did not view in Index, Resolution entering styling in the Index.jsx file.
 
+![Gemstore](https://user-images.githubusercontent.com/110206975/194207978-dd4ff5bd-a5d6-46ba-a59f-48e67b50297c.jpg)

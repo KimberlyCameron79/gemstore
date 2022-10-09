@@ -35,7 +35,7 @@ const products = [
     _id: "4",
     name: "Tiger's Eye",
     image:"C:\Users\Camer\OneDrive\Public\Pictures\tigerseye.jpg"
-    description:
+    Description:
     price: 150.00
     countInstock: 100,
     rating: 8,
